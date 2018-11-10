@@ -1,0 +1,19 @@
+Estatitica Multivariada
+
+Caráter Exploratória
+ 
+ Variáveis numéricas ou categóricas ordinais
+    PCA - Analise de componentes principais
+    Factorial Analysis
+ 
+ Variáveis categóricas
+    Correspondence Analysis
+    
+PCA aplica o peso a partir da variância , logo quando maior a variância, maior o peso colocado.
+
+A Análise de Componentes Principais ou PCA (Principal Component Analysis) é uma técnica de análise multivariada que
+pode ser usada para analisar inter-relações entre um grande número de variáveis e explicar essas variáveis em termos de 
+suas dimensões inerentes (Componentes).
+
+O objetivo é encontrar um meio de condensar a informação contida em várias variáveis originais em um conjunto 
+menor de variáveis estatísticas (componentes) com uma perda mínima de informação.
