@@ -1,0 +1,56 @@
+install.packages("ggplot2")
+install.packages("dplyr")rary(ggplot2)
+library(dplyr)
+
+data ("diamonds")
+diamonds %>% glimpse ()
+View(diamonds)
+help("diamonds")
+
+#vamos investigar nesse dataset as variaveis cut e clarity
+diamonds %>% group_by(cut) %>%           # banco de dados pipe ( %>% ) que agrupa uma variavel, esta agrupando pela variavel cut
+  summarise(n = n ()) # mostra o tamanho do cut
+
+# as variaveis cut e clarity - Coloca a frequencia e o percentual e o total
+diamonds %>%
+  group_by(cut) %>% 
+  summarise(freq = n ()) %>% 
+  ungroup() %>% 
+  mutate(total = sum(freq)) %>% 
+  mutate(perc = (freq/total) *100) %>% 
+  select(-total)
+
+# agora com comandos mais simples
+table (diamonds$cut) # indica as frequencias
+prop.table(table(diamonds$cut)) # indica os percentuais
+prop.table(table(diamonds$cut)) * 100 # multiplica por 100 e ja ta o percentual
+
+diamonds$caro = ifelse ( diamonds$price >
+                           mean(diamonds$price),
+                         "caro","barato")
+table (diamonds$caro)
+prop.table(table(diamonds$caro)) *100
+
+# tabela cruzada # com duas variaveis, objetivo é fazer analise dentro do grupo espefico e nao sobre o totak
+table(diamonds$cut, diamonds$caro) # quantidade de caros e baratos
+
+# transformar em proporções / frequencias
+t = table(diamonds$cut, diamonds$caro)
+t
+prop.table(t) * 100
+ # sempre calcular o 100% dentro da categoria especifica e não sobre o total geral
+# essa analise é aprofundanda, eu analiso dentro do grupo de baratos, qual dos diamantes tem maior proporção
+prop.table (t,margin = 2) *100
+prop.table(t,margin =1) *100
+
+# para variaveis categoricas, utiliza-se o teste Qui2. Para ele funcionar precisa ter tamanho maior 5
+t
+chisq.test(t)
+# df  = graus de liberdade
+# o valor de p calculado foi de 0<0.0001, ou seja podemos rejeitar a hipotese nula
+# e concluo que ha associação estat. sig. entre as variaveis
+
+# testar a relaçao entre caro e carat (peso) - Teste T
+t.test (diamonds$carat ~ diamonds$caro)
+# ha uma associaçao entre o peso e o preço caro
+
