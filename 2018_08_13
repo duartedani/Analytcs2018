@@ -1,0 +1,46 @@
+# Se as bibliotecas necessárias não estiveram instaladas, instale
+
+if (!"readr" %in% installed.packages()) install.packages("readr")
+if (!"dplyr" %in% installed.packages()) install.packages("dplyr")
+if (!"ggplot2" %in% installed.packages()) install.packages("ggplot2")
+if (!"haven" %in% installed.packages()) install.packages("haven")
+
+# Carregando as bibliotecas necessárias
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(haven)
+
+# Carrega uma amostra da PNAD 2014
+ bd = read_sav <a href="("https://github.com/neylsoncrepalde/MODUS/blob/master/PNAD2014_30a50_novo4.sav?raw=true")">TESTE</a>
+
+# Investigando o banco de dados
+dim(bd) #tamanho
+names(bd) #nomes das variáveis
+head(bd) #primeiros casos
+install.packages("descr")
+ 
+library(descr)
+class(bd$isei88) # tamanho do banho
+class(bd$anosesco) # tipo numerico 
+summary(bd$isei88) # estatistica descritiva do individuo
+summary(bd$anosesco) # estastistica descritiva do pai do individuo
+# com variaveis categoricas nao se usa correlacao - uma numerica e uma categorica  usa se analise de media , mais de duas variancias, utiliza-se analise de variancias
+cor(bd$anosesco,bd$escpai) # essa formula é para calcular a correlacao, para verificar r pearson. Neste caso a correlacao entre as duas variaveis 0,51, é uma correlacao média
+#Para plotar a correlacao vai ser usado o grafico de dispersao (scatteplot) x pai e y individuo
+plot(bd$escpai,bd$anosesco) #x primeiro depois o y - formula porca de fazer gráfico
+#GGPLOT - Forma elegante de fazer gráficos
+ 
+ggplot(bd,aes(x=escpai,
+              y = anosesco))+
+  geom_point()+ # tipo de gráfico
+  labs (x = "Escolaridade do pai",# titulo das variavies
+        y = " Anos de escolaridade",
+        tittle = "dispersao")
+# visualizar a distribuiçao de anosesco e escpai usando o r base
+hist(bd$anosesco) # grafico de histograma do individuo
+hist (bd$escpai) # grafico de histograma do pai
+ 
+ggplot(bd,aes(anosesco))+geom_histogram(bins = 10)# bins número de colunas que quero apresentar
+ggplot(bd,aes(escpai))+ geom_histogram(bins = 5) # aes - variavel para determinar y e x, cor e outros parametros
+ 
