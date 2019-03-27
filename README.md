@@ -4,16 +4,20 @@
 <br>
 <p>É a ciência de examinar dados brutos com o objetivo de encontrar padrões e tirar conclusões sobre essa informação, aplicando um processo algorítmico ou mecânico para obter informações. Topicos estudados:
 <br>
-<ol>
-  <li> Regressão linear</li>
-<ol>
+<ul>
+  <li> Regressão linear </li>
+  <li> Regressão multipla </li>
+  <li> Pressupostos do modelo: normalidade, heterocedasticidade, homoscedasticidade e da independência do erro </li>
+  <li> Regressão logistica linear </li>
+  <li> Análise de Componentes Principais </li>
+<ul>
+  <i>  Livros indicados</i>:
+  Econometria básica - Gujarati
+  Análise de dados através de métodos de estatística multivariada - Sueli Mingoti
+  
 
-</p> R
 
 
 
 
-
-
-# 2018
 
