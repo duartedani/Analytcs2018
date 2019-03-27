@@ -1,0 +1,31 @@
+Regressão Linear
+Variaveis Númericas - Contínuas (ex: dizima periodica) / Intervalares (ex: nº de pessoas)
+Variaveis Categóricas – Nominais (ex: sexo) / Ordinais (ex: ordem de chegada)
+
+Modelo Estatistico – Dependente ( quero explicar)
+Indenpente 
+
+https://github.com/neylsoncrepalde/analytics - Acesso a dados da primeira aula
+ No R o simbolo # significa comentário - Tudo que estiver após dele o codigo não vai rodar
+Comando para instalar - 
+
+install.packages # comando para instalar bibliotecas
+# instalar pacotes readr - importar bancos de dados na memoria
+# dplyr - pacote manipular 
+# descr estatistica descritiva 
+# ggplot2 graficos
+# library haven
+# SPSS empresa concorrente do R
+# comando dim(BD) confere as dimensoes do banco
+# names(bd) mostra os nomes das variaveis
+# head(bd)mostra os primeiros casos
+ 
+install.packages("descr")
+ 
+bd <- reaD_sav("https://github.com/neylsoncrepalde/MODUS/blob/master/PNAD2014_30a50_novo4.sav?raw=true")# bd recebe read
+dim(bd)
+names(bd)
+head(bd)
+# ano escolar - status socio economico (legenda respectivamente)
+# summary (bd$anosesco) - traz valores estasticos media, mediana, moda fria da tabela
+summary(bd$anosesco)
