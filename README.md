@@ -11,13 +11,15 @@
   <li> Regressão logistica linear </li>
   <li> Análise de Componentes Principais </li>
 <ul>
+<br>
   <i>  Livros indicados</i>:
-  Econometria básica - Gujarati
-  Análise de dados através de métodos de estatística multivariada - Sueli Mingoti
-  
+  <ul>
+    <li> Econometria básica - Gujarati </li>
+    <li> Análise de dados através de métodos de estatística multivariada - Sueli Mingoti </li>
+   
 
 
-
+ 
 
 
 
