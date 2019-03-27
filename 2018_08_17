@@ -1,0 +1,123 @@
+Regressâo Linear- Estimar a curva de regressao
+
+Curva de regressao populacional – crp = y = b +bx
+Curva de regressao amostral y = b0+x+ e(erro)
+
+Curva de regressao amostral
+  Y = b0 + b1+e
+  b0 é a constante ou a intercepto, aonde a curva toca o eixo y
+  B1 é a estimador
+  E é o erro - é calculado com a diferença do ponto até a reta 
+
+Equação populacional 
+  y=B0+B1X+E
+  Equacao da reta ^y = significa uma estimativa  ^y 
+  Equacao amostral  
+
+
+install.packages("ggplot2")
+install.packages("dplyr")
+library(ggplot2)
+library(dplyr)
+ 
+# Plotando um gráfico para exemplo:
+  x = rnorm(1000, mean = 1)
+  y = 3*x + 2*rnorm(1000, mean = 1)
+ 
+ggplot(NULL, aes(x, y)) + #geom_point() +
+  geom_vline(xintercept = 0) + geom_hline(yintercept = 0) +
+  stat_smooth(method = 'lm', se = F, col = 'red')
+ 
+ 
+# Studying the DIAMONDS data
+  data("diamonds")
+ 
+  dim(diamonds)
+  str(diamonds)
+  diamonds
+  ?diamonds
+ 
+# Verificando o peso do diamante
+  summary(diamonds$carat)
+
+# Verificando o preço do diamente
+  summary(diamonds$price)
+ 
+# Vamos investigar se há relação entre o peso e o preço
+  diamonds %>% 
+  ggplot(aes(x = carat, y = price))+
+  geom_point()
+ 
+ 
+# Agora, vamos estimar um modelo de regressão linear com a seguinte formula
+  price = b0 + b1*carat + e
+  reg = lm(price ~ carat, data = diamonds)
+  summary(reg) # Verifica resultados
+ 
+  help(diamonds)
+  summary(diamonds$price) # preço dos diamonds
+  summary(diamonds$carat)# peso dos diamands
+ 
+# correlacao de peso e preço do diamantes
+  cor(diamonds$carat,diamonds$price)
+
+# a correlacao é alta 0,92, quanto maior o peso do diamond maior o price
+
+#fazendo o grafico
+  ggplot(diamonds,aes(x=carat,
+                    y=price))+
+  geom_point()
+
+# variavel y dependente - x= variavel independente y= quero explicar - preço
+# x variavel explica - peso - preço = y=b0+b1x+c
+
+reg= lm (price ~ carat,
+         data = diamonds)
+summary(reg) # tenho que pedir essa formula visualizar o resultado da regressao
+
+# o intercepto é o valor esperado de y quando x é igual a 0
+# para cada aumento de de 1 unidade em x eu tenho um aumento medio de $7.7756,43
+
+
+
+
+Segunda parte da aula
+
+# Se as bibliotecas necessárias não estiveram instaladas, instale
+if (!"readr" %in% installed.packages()) install.packages("readr")
+if (!"dplyr" %in% installed.packages()) install.packages("dplyr")
+if (!"ggplot2" %in% installed.packages()) install.packages("ggplot2")
+if (!"haven" %in% installed.packages()) install.packages("haven")
+ 
+# Carregando as bibliotecas necessárias
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(haven)
+ 
+# Carrega uma amostra da PNAD 2014
+ 
+bd = read_sav("https://github.com/neylsoncrepalde/MODUS/blob/master/PNAD2014_30a50_novo4.sav?raw=true")
+dim(bd)
+bd
+#anosesco = b0+b1x+e - formula de regressao anos de escolaridade do individuo
+reg1=lm(anosesco ~ escpai,
+        data = bd)
+summary(reg1)
+# intercepto é a escolaridade de um individuo que o pai é analfabeto
+# b1 é a variavacao media de y, quando ha aumento de 1 unidade no x
+# quando eu aumento 1 ano na escolaridade do pai eu aumento 0,52 anos na escolaridade do filho
+ 
+b0 = reg1$coefficients [1]
+b1 = reg1$coefficients [2]
+reg1$coefficients
+ 
+ggplot(bd, aes(x = escpai,
+               y = anosesco))+
+  geom_point()+
+  geom_abline(intercept = b0,
+              slope = b1,
+              col= "red",lwd = 1)
+
+
+
