@@ -5,9 +5,7 @@ Variaveis Categóricas – Nominais (ex: sexo) / Ordinais (ex: ordem de chegada)
 Modelo Estatistico – Dependente ( quero explicar)
 Indenpente 
 
-https://github.com/neylsoncrepalde/analytics - Acesso a dados da primeira aula
- No R o simbolo # significa comentário - Tudo que estiver após dele o codigo não vai rodar
-Comando para instalar - 
+No R o simbolo # significa comentário - Tudo que estiver após dele o codigo não vai rodar
 
 install.packages # comando para instalar bibliotecas
 # instalar pacotes readr - importar bancos de dados na memoria
